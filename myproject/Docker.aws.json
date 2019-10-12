@@ -1,0 +1,13 @@
+    {
+      "AWSEBDockerrunVersion": "1",
+      "Image": {
+        "Name": "cameronsobhani/camazon",
+        "Update": "true"
+      },
+      "Ports": [
+        {
+          "ContainerPort": "4238"
+        }
+      ],
+      "Logging": "/var/log/nginx"
+    }
