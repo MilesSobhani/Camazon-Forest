@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Intro from "./components/Intro.jsx"
-import PictureBar from "./components/PictureBar.jsx"
+
 import PopOut from "./components/PopOut.jsx"
 import Qa from "./components/Qa.jsx"
 import Reviews from "./components/Reviews.jsx"
@@ -18,6 +18,7 @@ class App extends React.Component{
       //product
       //rating changes
       //
+      imageList: ["https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png"],
       imageUrl: "",
       productId: 0,
     }
@@ -39,8 +40,8 @@ class App extends React.Component{
       <Reviews />
       <WriteReview />
       <Qa />
-      <PictureBar />
-      <PopOut />
+
+      <PopOut urls={this.state.imageList}/>
 
     </div>
     )

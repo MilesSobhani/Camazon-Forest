@@ -2,7 +2,7 @@ const express = require('express');
 const port = 4239;
 const host = 'TODO';
 const app = express();
-app.use(express.static('./dist'));
+app.use(express.static('dist'));
 
 // var mysql = require('mysql');
 // var connection = mysql.createConnection({

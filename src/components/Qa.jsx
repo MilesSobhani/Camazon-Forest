@@ -4,9 +4,9 @@ const Qa = (props) => {
   return (
 <div>
 Community Q&A
-<span>
+<a href="#" onClick={function(){ console.log('scroll to juans component')}}>
 View Now
-</span>
+</a>
  </div>
   )
 }
