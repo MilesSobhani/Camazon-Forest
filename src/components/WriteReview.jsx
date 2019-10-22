@@ -6,7 +6,7 @@ const WriteReview = (props) => {
     <div>
       Have an opinion?
       Help others decide.
-      <a href="#" onClick={function(){ console.log('scroll to juans component 2')}}>
+      <a href="#" className={'cs-Juan-ref'} onClick={function(){ console.log('scroll to juans component 3')}}>
         Write a Review
       </a>
     </div>

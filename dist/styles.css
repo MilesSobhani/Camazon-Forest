@@ -1,0 +1,72 @@
+body{
+  font-family: Helvetica,Arial,sans-serif;
+}
+
+.cs-most-of-component{
+  display: flex;
+}
+.cs-Juan-ref{
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  padding-left: 10px;
+  padding-right: 10px;
+ 
+}
+.root {
+  display: 'flex';
+  flex-wrap: 'wrap';
+  justify-content: 'space-around';
+  overflow: 'hidden';
+
+}
+.icon {
+  color: 'rgba(255, 255, 255, 0.54)';
+}
+
+.cs-grid {
+  padding-left: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100px;
+}
+.cs-image-Buttons {  
+  flex-wrap: 'wrap';
+  flex-direction: column-reverse;
+  height: 80px; 
+  width: 100px; 
+}
+.cs-images {  
+  flex-direction: row-reverse;
+  overflow: hidden;
+  justify-content: center;
+  justify-content: left;
+  justify-content: right;
+  position: relative; height: 80px; width: 100px;
+
+}
+.cs-modal {
+  justify-content: right;
+  justify-content: left;
+  justify-content: center;
+  position: fixed;
+}
+.star-ratings {
+  display: inline-block;
+    position: relative;
+    font-size: 1.4285714285714286rem;
+    text-align: center!important;
+    font-family: ICON;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    transform: scale(.80);
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    
+    /*  */
+    height: 70px;
+
+
+}
