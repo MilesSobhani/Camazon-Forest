@@ -1,66 +1,100 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+//import ReactDOM from "react-dom";
+import Portal from '@material-ui/core/Portal';
 import Modal from '@material-ui/core/Modal';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import ModalClick from './ModalClick.jsx';
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
 
-function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
 
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
+
+class PopOut extends React.Component {
+  constructor(props) {
+    super(props);
+    this.elem = document.createElement('div');
+
+
+    // this.handleOpen = this.handleOpen.bind(this);
+    // this.handleClose = this.handleClose.bind(this);
+    this.state = {
+      displayUrl: [this.props.urls[0], this.props.urls[1], this.props.urls[2], this.props.urls[3], this.props.urls[4]],
+      url: this.props.urls,
+      popState: this.props.popState,
+      setOpen: false,
+      container : null,
+      focus: 0,
+    }
+
+    // this.state.popState = this.state.popState.bind(this);
+    
+
   };
-}
+  // handleOpen() {
 
-const useStyles = makeStyles(theme => ({
-  paper: {
-    position: 'absolute',
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-}));
+  // };
 
-export default function PopOut() {
-  const classes = useStyles();
-  // getModalStyle is not a pure function, we roll the style only on the first render
-  const [modalStyle] = React.useState(getModalStyle);
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
+  handleClose() {
+    this.setState({setOpen: false});
   };
+       render(){
 
-  const handleClose = () => {
-    setOpen(false);
-  };
 
-  return (
-    <div>
-      <button type="button" onClick={handleOpen}>
-      <img src='https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/halloween-trivia-jack-o-lanterns-1531163183.jpg?crop=0.619xw:0.932xh;0.0952xw,0.0677xh&resize=480:*' />
+    return (
+    <div className={'cs-most-of-component'}>
+    
+    <div className={"gridList"}>
+      {this.state.displayUrl.map((tile, i) => (
+        <button className={'cs-grid'} key={i} onClick={() => {this.state.setOpen ? this.setState({setOpen: false}) : this.setState({setOpen: true}); this.setState({focus: i})} }>
+          <img className={'cs-images'} src={tile} alt={tile}/>
+        </button>
+        
+        ))}
+      {(() => {
+        if(this.state.url.length > 4){
+        return (      
+        <a href="#" className={'cs-more'} onClick={() => {this.state.setOpen ? this.setState({setOpen: false}) : this.setState({setOpen: true})} }>
+        + more
+        </a>)}})()}
+
+      </div>
+      <button className={'cs-main-image-modal-button'} onClick={() => {this.state.setOpen ? this.setState({setOpen: false}) : this.setState({setOpen: true})} }>
+        <img src={this.props.urls[0]} />
       </button>
-      <Modal
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-        open={open}
-        onClose={handleClose}
+    {this.state.setOpen ? (
+
+      <Portal
+      container={this.state.container}
       >
-        <div style={modalStyle} className={classes.paper}>
-          <h2 id="simple-modal-title">Text in a modal</h2>
-          <button id="simple-modal-description">
-            +
-          </button>
-          <PopOut />
-        </div>
+        <div>
+
+      <Modal
+      className={"cs-modal-outer"}
+      aria-labelledby="modal-title"
+      aria-describedby="modal-description"
+      open={true}
+      onClose={() => {this.setState({setOpen: false})}}
+      >
+      <ModalClick urls={this.props.urls} focus={this.state.focus}/>
       </Modal>
+      </div>
+    </Portal>
+      ) : null}
+    <div className={"portal"} ref={this.state.container}/>
     </div>
-  );
+    );
+  }
 }
+
+// const style = {
+//   root: {
+//      flexGrow: 1,
+//    },
+//    paper: {
+//      padding: theme.spacing(2),
+//      textAlign: 'center',
+//      color: theme.palette.text.secondary,
+//    },
+// }
+    export default PopOut;

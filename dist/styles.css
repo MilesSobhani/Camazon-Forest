@@ -1,0 +1,173 @@
+body{
+  font-family: Helvetica,Arial,sans-serif;
+}
+
+.cs-most-of-component{
+  display: flex;
+}
+.cs-Juan-ref{
+  display: flex;
+  /* flex-wrap: wrap; */
+  /* box-sizing: border-box; */
+  /* padding-left: 10px;
+  padding-right: 10px; */
+  /* clear: both; */
+    /* width: 100%; */
+ 
+}
+/* .root {
+  display: 'flex';
+  flex-wrap: 'wrap';
+  justify-content: 'space-around';
+  overflow: 'hidden';
+
+} */
+.icon {
+  /* color: 'rgba(255, 255, 255, 0.54)'; */
+}
+
+.cs-grid {
+  /* padding-left: 10px; */
+  border:none;
+  background: white;
+  display: flex;
+  /* flex-wrap: wrap; */
+  width: 100px;
+  height: 97px;
+
+}
+.cs-grid-modal{
+  border:none;
+  background: white;
+  /* display: flex; */
+  flex-direction: column;
+  columns: 2;
+  grid-row: auto;
+
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+
+  width: 200px;
+  /* height: 100px; */
+
+}
+.more{
+  align-content: center;
+  justify-content: center;
+}
+.cs-images {  
+  /* flex-direction: row-reverse; */
+  overflow: hidden;
+  align-content: center;
+  justify-content: center;
+  /* position: relative; */
+  width: 100%;
+
+}
+.cs-modal-image-bar {
+  border:none;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  columns: 2;
+  height: 100px;
+  width: 85px;
+
+}
+.cs-modal-outer{
+  /* margin: auto; */
+  justify-content: left;
+  padding-top: 5%;
+  padding-left: 5%;
+  width: 39%;
+  height: auto;
+  max-width: 550px;
+
+  /* margin: auto; */
+  /* align-content: center; */
+}
+.cs-modal {
+  display: flex;
+  justify-content: left;
+  /* height: 700px;
+  width: 1000px; */
+  overflow: hidden;
+  /* margin: auto; */
+  /*padding-left: 50px; */
+  background-color: aliceblue;
+
+
+  /* justify-content: right; */
+  /* justify-content: left; */
+  /* justify-content: center; */
+  /* position: fixed; */
+}
+.star-ratings {
+  display: inline-block;
+  position: relative;
+  font-size: 1.4285714285714286rem;
+  text-align: center!important;
+  font-family: ICON;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  transform: scale(.80);
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  
+  /*  */
+  height: 70px;
+
+
+}
+.cs-zoom{
+  flex: auto;
+  flex-direction: column;
+  height: 34px;
+  width: 34px;
+  min-height: 34px;
+  max-height: 34px;
+  display: block;
+  margin-bottom: -1px;
+  /* padding: 0 15px; */
+  align-items: flex-start;
+  text-align: center;
+  cursor: pointer;
+  /* background-image: none; */
+}
+
+.cs-zoom-nav {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  opacity: .5;
+  z-index: 35;
+}
+
+.product-image {
+  z-index: -10;
+  /* transform: matrix(1, 0, 0, 1, 0, 0);  */
+  overflow: hidden;
+  backface-visibility: hidden; 
+  transform-origin: 50% 50%; cursor: move; 
+  transition: transform 200ms ease-in-out 0s;
+  border: blue 20px;
+  width: 400px;
+  height: 400px;
+}
+
+.cs-modal-focus-div{
+  overflow: hidden;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  position: relative;
+  /* width: 900px;
+  height: 500px; */
+  z-index: 0;
+}
+.cs-main-image-modal-button{
+  height: 400px;
+  border:none;
+  background: white;
+}
