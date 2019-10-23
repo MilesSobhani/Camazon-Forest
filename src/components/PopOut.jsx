@@ -23,6 +23,7 @@ class PopOut extends React.Component {
       popState: this.props.popState,
       setOpen: false,
       container : null,
+      focus: 0,
     }
 
     // this.state.popState = this.state.popState.bind(this);
@@ -43,8 +44,8 @@ class PopOut extends React.Component {
     <div className={'cs-most-of-component'}>
     
     <div className={"gridList"}>
-      {this.props.urls.map(tile => (
-        <button className={'cs-grid'}  onClick={() => {this.state.setOpen ? this.setState({setOpen: false}) : this.setState({setOpen: true})} }>
+      {this.props.urls.map((tile, i) => (
+        <button className={'cs-grid'} key={i} onClick={() => {this.state.setOpen ? this.setState({setOpen: false}) : this.setState({setOpen: true}); this.setState({focus: i})} }>
           <img className={'cs-images'} src={tile} alt={tile}/>
         </button>
         
@@ -58,15 +59,18 @@ class PopOut extends React.Component {
       <Portal
       container={this.state.container}
       >
+        <div>
+
       <Modal
       className={"cs-modal"}
-      aria-labelledby="modal-title"
-      aria-describedby="modal-description"
+      // aria-labelledby="modal-title"
+      // aria-describedby="modal-description"
       open={true}
       onClose={() => {this.setState({setOpen: false})}}
       >
-      <ModalClick urls={this.props.urls}/>
+      <ModalClick urls={this.props.urls} focus={this.state.focus}/>
       </Modal>
+      </div>
     </Portal>
       ) : null}
     <div className={"portal"} ref={this.state.container}/>

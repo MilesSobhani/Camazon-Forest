@@ -11,6 +11,8 @@ body{
   box-sizing: border-box;
   padding-left: 10px;
   padding-right: 10px;
+  clear: both;
+    width: 100%;
  
 }
 .root {
@@ -29,11 +31,20 @@ body{
   display: flex;
   flex-wrap: wrap;
   width: 100px;
+  height: 100px;
+}
+.cs-grid-modal{
+  padding-left: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100px;
+  height: 100px;
+  z-index: 10;
 }
 .cs-image-Buttons {  
   flex-wrap: 'wrap';
   flex-direction: column-reverse;
-  height: 80px; 
+  height: 50px; 
   width: 100px; 
 }
 .cs-images {  
@@ -42,14 +53,26 @@ body{
   justify-content: center;
   justify-content: left;
   justify-content: right;
-  position: relative; height: 80px; width: 100px;
+  position: relative;
+  height: 100%;
+  width: 100%
 
 }
 .cs-modal {
-  justify-content: right;
-  justify-content: left;
-  justify-content: center;
-  position: fixed;
+  align-content: center;
+  height: 700px;
+  width: 1000px;
+  overflow: hidden;
+  padding-top: 50px;
+  /*padding-left: 50px; */
+  display: flex;
+  background-color: blueviolet;
+
+
+  /* justify-content: right; */
+  /* justify-content: left; */
+  /* justify-content: center; */
+  /* position: fixed; */
 }
 .star-ratings {
   display: inline-block;
@@ -57,7 +80,6 @@ body{
     font-size: 1.4285714285714286rem;
     text-align: center!important;
     font-family: ICON;
-    speak: none;
     font-style: normal;
     font-weight: 400;
     font-variant: normal;
@@ -69,4 +91,46 @@ body{
     height: 70px;
 
 
+}
+.cs-zoom{
+  flex: auto;
+  flex-direction: column;
+  height: 34px;
+  width: 34px;
+  min-height: 34px;
+  max-height: 34px;
+  display: block;
+  margin-bottom: -1px;
+  padding: 0 15px;
+  align-items: flex-start;
+  text-align: center;
+  cursor: pointer;
+  background-image: none;
+}
+
+.cs-zoom-nav {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  opacity: .5;
+  z-index: 35;
+}
+
+.product-image {
+  z-index: -10;
+  padding-left: 50px;
+  /* transform: matrix(1, 0, 0, 1, 0, 0);  */
+  overflow: hidden;
+  backface-visibility: hidden; 
+  transform-origin: 50% 50%; cursor: move; 
+  transition: transform 200ms ease-in-out 0s;
+  border: blue 20px;
+}
+
+.cs-modal-focus-div{
+  display: flex;
+  position: relative;
+  width: 900px;
+  height: 500px;
+  z-index: 0;
 }
