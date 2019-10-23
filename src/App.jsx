@@ -19,6 +19,7 @@ class App extends React.Component{
       //rating changes
       //
       imageList: ["https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/halloween-trivia-jack-o-lanterns-1531163183.jpg?crop=0.619xw:0.932xh;0.0952xw,0.0677xh&resize=480:*", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png"],
+//    imageList: ["https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/halloween-trivia-jack-o-lanterns-1531163183.jpg?crop=0.619xw:0.932xh;0.0952xw,0.0677xh&resize=480:*", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png"],
       imageUrl: "",
       productId: 0,
       clicks: 0,

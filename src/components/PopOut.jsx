@@ -19,6 +19,7 @@ class PopOut extends React.Component {
     // this.handleOpen = this.handleOpen.bind(this);
     // this.handleClose = this.handleClose.bind(this);
     this.state = {
+      displayUrl: [this.props.urls[0], this.props.urls[1], this.props.urls[2], this.props.urls[3], this.props.urls[4]],
       url: this.props.urls,
       popState: this.props.popState,
       setOpen: false,
@@ -30,9 +31,9 @@ class PopOut extends React.Component {
     
 
   };
-  handleOpen() {
+  // handleOpen() {
 
-  };
+  // };
 
   handleClose() {
     this.setState({setOpen: false});
@@ -44,14 +45,21 @@ class PopOut extends React.Component {
     <div className={'cs-most-of-component'}>
     
     <div className={"gridList"}>
-      {this.props.urls.map((tile, i) => (
+      {this.state.displayUrl.map((tile, i) => (
         <button className={'cs-grid'} key={i} onClick={() => {this.state.setOpen ? this.setState({setOpen: false}) : this.setState({setOpen: true}); this.setState({focus: i})} }>
           <img className={'cs-images'} src={tile} alt={tile}/>
         </button>
         
         ))}
+      {(() => {
+        if(this.state.url.length > 4){
+        return (      
+        <a href="#" className={'cs-more'} onClick={() => {this.state.setOpen ? this.setState({setOpen: false}) : this.setState({setOpen: true})} }>
+        + more
+        </a>)}})()}
+
       </div>
-      <button onClick={() => {this.state.setOpen ? this.setState({setOpen: false}) : this.setState({setOpen: true})} }>
+      <button className={'cs-main-image-modal-button'} onClick={() => {this.state.setOpen ? this.setState({setOpen: false}) : this.setState({setOpen: true})} }>
         <img src={this.props.urls[0]} />
       </button>
     {this.state.setOpen ? (
@@ -62,9 +70,9 @@ class PopOut extends React.Component {
         <div>
 
       <Modal
-      className={"cs-modal"}
-      // aria-labelledby="modal-title"
-      // aria-describedby="modal-description"
+      className={"cs-modal-outer"}
+      aria-labelledby="modal-title"
+      aria-describedby="modal-description"
       open={true}
       onClose={() => {this.setState({setOpen: false})}}
       >
@@ -79,4 +87,14 @@ class PopOut extends React.Component {
   }
 }
 
+// const style = {
+//   root: {
+//      flexGrow: 1,
+//    },
+//    paper: {
+//      padding: theme.spacing(2),
+//      textAlign: 'center',
+//      color: theme.palette.text.secondary,
+//    },
+// }
     export default PopOut;

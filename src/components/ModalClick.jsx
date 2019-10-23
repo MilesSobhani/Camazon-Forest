@@ -39,13 +39,13 @@ class ModalClick extends React.Component {
       return (
          <div className={'cs-modal'}>
 
-         <div className={"cs-grid-modal"}>
-         {this.props.urls.map((tile, k) => (
-         <button className={'cs-image-bar'} key={k} onClick={(e) => { this.setState({focus: k}); console.log(k); this.setState({zoom: 1, zoom2: 1})}}>
-         <img className={'cs-images'} src={tile} alt={tile}/>
-         </button>
-         ))}
-         </div>
+            <div className={"cs-grid-modal"}>
+            {this.props.urls.map((tile, k) => (
+               <button className={'cs-image-bar cs-modal-image-bar'} key={k} onClick={(e) => { this.setState({focus: k}); console.log(k); this.setState({zoom: 1, zoom2: 1})}}>
+               <img className={'cs-images'} src={tile} alt={tile}/>
+               </button>
+            ))}
+            </div>
 
       <div className="cs-modal-focus-div">
          
@@ -62,7 +62,16 @@ class ModalClick extends React.Component {
 );
 }
 }
-
+// const style = {
+//    root: {
+//       flexGrow: 1,
+//     },
+//     paper: {
+//       padding: theme.spacing(2),
+//       textAlign: 'center',
+//       color: theme.palette.text.secondary,
+//     },
+// }
 
 export default ModalClick   
 /*{<img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png" /> }
