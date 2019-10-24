@@ -8,6 +8,8 @@ import Title from "./components/Title.jsx"
 //import WriteReview from "./components/WriteReview.jsx"
 import ModalClick from "./components/ModalClick.jsx";
 //import CSS from 'bootstrap/dist/css/bootstrap.min.css';
+import Axios from "axios";
+import './styles/styles.css';
 
 class App extends React.Component{
   constructor(props){
@@ -18,16 +20,41 @@ class App extends React.Component{
       //product
       //rating changes
       //
-      imageList: ["https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/halloween-trivia-jack-o-lanterns-1531163183.jpg?crop=0.619xw:0.932xh;0.0952xw,0.0677xh&resize=480:*", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png"],
+      imageList: [],
 //    imageList: ["https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/halloween-trivia-jack-o-lanterns-1531163183.jpg?crop=0.619xw:0.932xh;0.0952xw,0.0677xh&resize=480:*", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png"],
       imageUrl: "",
       productId: 0,
       clicks: 0,
       stars: 3.2,
+      productName: '',
     }
     this.poppingOut = this.poppingOut.bind(this);
   }
+  
+  componentDidMount() {
+    Axios.get('/lem')
+    .then((response) => {
 
+      let urls = response.data.map(url => {      
+        url.URL = url.URL.split(", ");
+        return url.URL;      
+      })
+      urls = urls.flat();
+      console.log('this is response -> ',response.data);
+
+      this.setState({
+        imageList: urls,
+        imageUrl: urls,
+        productName: response.data[0].Name,
+        productId: response.data[0].ID,
+        })
+
+    })
+    .catch(function (error) {
+      console.log('this error -> ',error);
+    })
+  }
+  
   poppingOut () {
     this.setState(state => ({
       clicks: state.clicks + 1
@@ -46,7 +73,7 @@ class App extends React.Component{
 // />     
 <div>
       <Intro />
-      <Title />
+      <Title name={this.state.productName}/>
       {/* <Reviews />
       <WriteReview /> */}
       <Qa stars={this.state.stars}/>

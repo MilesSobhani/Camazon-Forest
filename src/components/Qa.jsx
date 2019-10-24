@@ -1,36 +1,33 @@
 import React from "react";
-import StarRatings from 'react-star-ratings';
+// import { mdiDocker } from '@mdi/js';
+
 const Qa = (props) => {
   return (
-    <div className={'cs-Juan-ref'}>
+  <div className={'cs-Juan-ref'}>
     <a href="#" className={"star-ratings"} onClick={function(){ console.log('scroll to juans component 2')}}>
       <div>10 Reviews!</div>
-    <div className={'cs-Juan-ref'}>
-        <StarRatings
-          starRatedColor="blue"
-          numberOfStars={5}
-          name='rating'
-          rating={props.stars}
-          />
-    </div>
-  </a>
-    <ul >
-    <div>
-      Have an opinion?
-    </div>
-      Help others decide.
-    <a href="#" className={'cs-Juan-ref'} onClick={function(){ console.log('scroll to juans component 3')}}>
-      Write a Review
+      <div className={'cs-subJuan'}>
+
+      </div>
     </a>
-  </ul>
-<ul>
-<div>Community</div> 
-<div>Q&A</div> 
-<a href="#" className={'cs-Juan-ref'} onClick={function(){ console.log('scroll to juans component')}}>
-View Now
-</a>
- </ul>
-</div>
+    <ul className={'cs-subJuan'}>
+      <div>
+        Have an opinion?
+      </div>
+      Help others decide.
+      <a href="#" className={'cs-subJuan'} onClick={function(){ console.log('scroll to juans component 3')}}>
+        Write a Review
+      </a>
+    </ul>
+    <ul className={'cs-subJuan'}>
+      <img />
+      <div>Community</div> 
+      <div>Q&A</div> 
+      <a href="#" className={'cs-subJuan'} onClick={function(){ console.log('scroll to juans component')}}>  
+        View Now
+      </a>
+    </ul>
+  </div>
  
   )
 }

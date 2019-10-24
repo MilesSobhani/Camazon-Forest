@@ -6,25 +6,16 @@ body{
   display: flex;
 }
 .cs-Juan-ref{
-  display: flex;
-  /* flex-wrap: wrap; */
-  /* box-sizing: border-box; */
-  /* padding-left: 10px;
-  padding-right: 10px; */
-  /* clear: both; */
-    /* width: 100%; */
- 
+  /* display: flex; */
+  height: 70px;
+  display: table;
+  color: #5d5d5d;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  /* display: block; */
+  width: 40%;
 }
-/* .root {
-  display: 'flex';
-  flex-wrap: 'wrap';
-  justify-content: 'space-around';
-  overflow: 'hidden';
 
-} */
-.icon {
-  /* color: 'rgba(255, 255, 255, 0.54)'; */
-}
 
 .cs-grid {
   /* padding-left: 10px; */
@@ -34,11 +25,11 @@ body{
   /* flex-wrap: wrap; */
   width: 100px;
   height: 97px;
-
+  background-color: rgba(0,0,0,.5);
 }
 .cs-grid-modal{
   border:none;
-  background: white;
+  background: transparent;
   /* display: flex; */
   flex-direction: column;
   columns: 2;
@@ -48,7 +39,8 @@ body{
   /* flex-wrap: wrap; */
 
   width: 200px;
-  /* height: 100px; */
+  /* height: 100px; */  
+
 
 }
 .more{
@@ -59,10 +51,26 @@ body{
   /* flex-direction: row-reverse; */
   overflow: hidden;
   align-content: center;
-  justify-content: center;
+  /* justify-content: center; */
   /* position: relative; */
-  width: 100%;
+  width: 110%;
+  height: 95px;
 
+}
+.cs-subJuan{
+  display: table-cell;
+  width: 33.33%;
+  margin-bottom: 5px!important;
+  text-align: center!important;
+}
+.cs-images:hover {
+  /* background:black; */
+ border: 3px solid black;
+  }
+.cs-icons{
+  align-content: center;
+  width: 110%;
+  height: 100%;
 }
 .cs-modal-image-bar {
   border:none;
@@ -82,11 +90,14 @@ body{
   width: 39%;
   height: auto;
   max-width: 550px;
+  border: 20px;
+
 
   /* margin: auto; */
   /* align-content: center; */
 }
 .cs-modal {
+  position: absolute;
   display: flex;
   justify-content: left;
   /* height: 700px;
@@ -94,7 +105,7 @@ body{
   overflow: hidden;
   /* margin: auto; */
   /*padding-left: 50px; */
-  background-color: aliceblue;
+  background-color: rgba(255, 255, 255, 0.7);
 
 
   /* justify-content: right; */
@@ -102,24 +113,7 @@ body{
   /* justify-content: center; */
   /* position: fixed; */
 }
-.star-ratings {
-  display: inline-block;
-  position: relative;
-  font-size: 1.4285714285714286rem;
-  text-align: center!important;
-  font-family: ICON;
-  font-style: normal;
-  font-weight: 400;
-  font-variant: normal;
-  transform: scale(.80);
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  
-  /*  */
-  height: 70px;
 
-
-}
 .cs-zoom{
   flex: auto;
   flex-direction: column;
@@ -151,7 +145,6 @@ body{
   backface-visibility: hidden; 
   transform-origin: 50% 50%; cursor: move; 
   transition: transform 200ms ease-in-out 0s;
-  border: blue 20px;
   width: 400px;
   height: 400px;
 }
@@ -167,7 +160,10 @@ body{
   z-index: 0;
 }
 .cs-main-image-modal-button{
-  height: 400px;
+  min-height: 350px;
+  max-height: 450px;
+  /* border:5px; */
   border:none;
+  background: transparent;
   background: white;
 }
