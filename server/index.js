@@ -2,6 +2,7 @@ const express = require('express');
 const port = 4239;
 const config = require('../config');
 const app = express();
+const absolutePath = path.join(__dirname, dist))
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const cors = require("cors");
@@ -16,7 +17,7 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 
-app.use(express.static('dist'));
+app.use(express.static(absolutePath));
 // app.use(express.json());
 bodyParser.json();
 
