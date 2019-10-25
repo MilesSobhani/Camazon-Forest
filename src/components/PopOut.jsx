@@ -14,12 +14,11 @@ class PopOut extends React.Component {
   constructor(props) {
     super(props);
     this.elem = document.createElement('div');
-
-
     // this.handleOpen = this.handleOpen.bind(this);
     // this.handleClose = this.handleClose.bind(this);
     this.state = {
-      displayUrl: [this.props.urls[0], this.props.urls[1], this.props.urls[2], this.props.urls[3], this.props.urls[4]],
+      displayUrl: this.props.urls,
+      //displayUrl: [this.props.urls[0], this.props.urls[1], this.props.urls[2], this.props.urls[3], this.props.urls[4]],
       url: this.props.urls,
       popState: this.props.popState,
       setOpen: false,
@@ -45,12 +44,16 @@ class PopOut extends React.Component {
     <div className={'cs-most-of-component'}>
     
     <div className={"gridList"}>
-      {this.state.displayUrl.map((tile, i) => (
-        <button className={'cs-grid'} key={i} onClick={() => {this.state.setOpen ? this.setState({setOpen: false}) : this.setState({setOpen: true}); this.setState({focus: i})} }>
-          <img className={'cs-images'} src={tile} alt={tile}/>
-        </button>
+      {this.props.urls.map((tile, i) => {
+        if(i < 5){
+          return(
+
+          <button className={'cs-grid'} key={i} onClick={() => {this.state.setOpen ? this.setState({setOpen: false}) : this.setState({setOpen: true}); this.setState({focus: i})} }>
+            <img className={'cs-icons cs-images'} src={tile} alt={tile}/>
+          </button>
+        )}
         
-        ))}
+        })}
       {(() => {
         if(this.state.url.length > 4){
         return (      
@@ -60,7 +63,7 @@ class PopOut extends React.Component {
 
       </div>
       <button className={'cs-main-image-modal-button'} onClick={() => {this.state.setOpen ? this.setState({setOpen: false}) : this.setState({setOpen: true})} }>
-        <img src={this.props.urls[0]} />
+        <img className={'cs-main-image-modal-button'} src={this.props.urls[0]} />
       </button>
     {this.state.setOpen ? (
 
@@ -71,8 +74,8 @@ class PopOut extends React.Component {
 
       <Modal
       className={"cs-modal-outer"}
-      aria-labelledby="modal-title"
-      aria-describedby="modal-description"
+      // aria-labelledby="modal-title"
+      // aria-describedby="modal-description"
       open={true}
       onClose={() => {this.setState({setOpen: false})}}
       >

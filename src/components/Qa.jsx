@@ -1,36 +1,55 @@
 import React from "react";
-import StarRatings from 'react-star-ratings';
+// import { mdiDocker } from '@mdi/js';
+import StarIcon from '@material-ui/icons/Star';
+import StarIconBorder from '@material-ui/icons/StarBorder';
+import ChatIcon from '@material-ui/icons/Chat';
 const Qa = (props) => {
   return (
-    <div className={'cs-Juan-ref'}>
-    <a href="#" className={"star-ratings"} onClick={function(){ console.log('scroll to juans component 2')}}>
-      <div>10 Reviews!</div>
-    <div className={'cs-Juan-ref'}>
-        <StarRatings
-          starRatedColor="blue"
-          numberOfStars={5}
-          name='rating'
-          rating={props.stars}
-          />
-    </div>
-  </a>
-    <ul >
-    <div>
-      Have an opinion?
-    </div>
-      Help others decide.
-    <a href="#" className={'cs-Juan-ref'} onClick={function(){ console.log('scroll to juans component 3')}}>
-      Write a Review
+  <div className={'cs-Juan-ref'}>
+
+      <a href="#" className={"star-ratings"} onClick={function(){ console.log('scroll to juans component 2')}}>
+      
+      <div className={'cs-subJuan'}>      
+      <div >10 Reviews!</div>
+      <div className={'cs-stars'}>
+
+      <StarIcon className={'cs-stars'}>
+      </StarIcon>
+      <StarIconBorder>
+      </StarIconBorder>
+      <StarIconBorder>
+      </StarIconBorder>
+      <StarIconBorder>
+      </StarIconBorder>
+      <StarIconBorder>
+      </StarIconBorder>
+      </div>
+      </div>
     </a>
-  </ul>
-<ul>
-<div>Community</div> 
-<div>Q&A</div> 
-<a href="#" className={'cs-Juan-ref'} onClick={function(){ console.log('scroll to juans component')}}>
-View Now
-</a>
- </ul>
-</div>
+    <ul className={'cs-subJuan'}>
+      <div>
+      Have an opinion? 
+      <div>
+      Help others decide.
+      </div>
+      <a href="#" className={'cs-stars'} onClick={function(){ console.log('scroll to juans component 3')}}>
+      Write a Review
+      </a>
+      </div>
+    </ul>
+    <ul className={'cs-subJuan'}>
+      {/* <StarIcon>
+      </StarIcon> */}
+      <ChatIcon>
+      </ChatIcon>
+      <div className={'cs-subJuan'}>Community Q&A</div> 
+      <div>
+        <a href="#" className={'cs-stars'} onClick={function(){ console.log('scroll to juans component')}}>  
+        View Now
+      </a>
+      </div>
+    </ul>
+  </div>
  
   )
 }
