@@ -1,8 +1,9 @@
 const express = require('express');
 const port = 4239;
+const path = require('path');
 const config = require('../config');
 const app = express();
-const absolutePath = path.join(__dirname, dist))
+const absolutePath = path.join(__dirname, '/../dist');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const cors = require("cors");

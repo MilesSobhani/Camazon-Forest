@@ -31,9 +31,9 @@ class App extends React.Component{
     }
     this.poppingOut = this.poppingOut.bind(this);
   }
-  
+  //http://fechallowes.us-east-2.elasticbeanstalk.com
   componentDidMount() {
-    Axios.get('http://fechallowes.us-east-2.elasticbeanstalk.com//lem')
+    Axios.get('/lem')
     .then((response) => {
 
       let urls = response.data.urls.map(url => {      
