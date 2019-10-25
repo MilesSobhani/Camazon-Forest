@@ -33,7 +33,7 @@ class App extends React.Component{
   }
   
   componentDidMount() {
-    Axios.get('/lem')
+    Axios.get('http://fechallowes.us-east-2.elasticbeanstalk.com//lem')
     .then((response) => {
 
       let urls = response.data.urls.map(url => {      
