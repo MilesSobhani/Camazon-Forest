@@ -3,5 +3,5 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
 COPY . .
-EXPOSE 7259
+EXPOSE 4239
 CMD ["node", "sever/index.js"]

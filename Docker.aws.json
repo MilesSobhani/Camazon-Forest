@@ -1,12 +1,12 @@
     {
       "AWSEBDockerrunVersion": "1",
       "Image": {
-        "Name": "cameronsobhani/camazon",
+        "Name": "cameronsobhani/fec-hallowes",
         "Update": "true"
       },
       "Ports": [
         {
-          "ContainerPort": "4238"
+          "ContainerPort": "4239"
         }
       ],
       "Logging": "/var/log/nginx"
