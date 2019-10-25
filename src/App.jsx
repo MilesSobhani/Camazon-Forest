@@ -27,6 +27,7 @@ class App extends React.Component{
       clicks: 0,
       stars: 3.2,
       productName: '',
+      category: "",
     }
     this.poppingOut = this.poppingOut.bind(this);
   }
@@ -35,18 +36,19 @@ class App extends React.Component{
     Axios.get('/lem')
     .then((response) => {
 
-      let urls = response.data.map(url => {      
+      let urls = response.data.urls.map(url => {      
         url.URL = url.URL.split(", ");
         return url.URL;      
       })
       urls = urls.flat();
       console.log('this is response -> ',response.data);
-
+      console.log(response.data.cate.Category);
       this.setState({
         imageList: urls,
         imageUrl: urls,
-        productName: response.data[0].Name,
-        productId: response.data[0].ID,
+        productName: response.data.urls[0].Name,
+        productId: response.data.urls[0].ID,
+        category: response.data.cate[0].Category,
         })
 
     })
@@ -72,7 +74,7 @@ class App extends React.Component{
 //   alt="Hello World!"
 // />     
 <div>
-      <Intro />
+      <Intro category={this.state.category}/>
       <Title name={this.state.productName}/>
       {/* <Reviews />
       <WriteReview /> */}

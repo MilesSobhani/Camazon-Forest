@@ -4,7 +4,7 @@ const Intro = (props) => {
   return (
 
     <div>
-   Home Decor > Spooky > Spooky Chair
+   Home Decor > Spooky > {props.category}
  </div>
     )
 }

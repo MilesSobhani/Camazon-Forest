@@ -10,7 +10,7 @@ app.use(cors());
 
 var connection = mysql.createConnection({
   host: config.host,
-  user: 'admin',
+  user: config.user,
   password: config.DBPW,
   database: 'Hallowes',
 });
@@ -24,17 +24,23 @@ app.get('/lem', (req, res) => {
   // console.log("this request is working");
   // console.log(connection);
 // let thisQuery = 'SELECT * FROM urls '
-  let options = [];
-  connection.query(`SELECT * FROM urls WHERE Name = "${productName}"`, options, function (error, results, fields) {
+  connection.query(`SELECT * FROM urls WHERE Name = "${productName}"`, function (error, resultsOne, fields) {
     if (error){ 
-      throw error
+      throw error;
     } else {
+      let starterLoad = {
+        urls: resultsOne,
+      }
+      connection.query(`SELECT * FROM product_table WHERE Name = "${productName}"`, function (error, results, fields) {
       // let urlArray =  results.map((urls) =>  {
-      //   return results;
-      // })
-        console.log('This is the res send ', results);
-        // res.send.data = urlArray;
-        res.send(results);
+        if(error){
+          throw error;
+        } else {
+          starterLoad.cate = results;
+          console.log('This is the res send ', starterLoad);
+          res.send(starterLoad);
+        }
+      })
       }
     })
 
