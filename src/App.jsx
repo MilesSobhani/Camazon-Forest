@@ -24,22 +24,25 @@ class App extends React.Component{
       imageUrl: "",
       productId: 0,
       clicks: 0,
-      stars: 3.2,
+      stars: 5,
       productName: '',
       category: "",
+      numberOfReviews : 0,
     }
     this.poppingOut = this.poppingOut.bind(this);
   }
   //
   componentDidMount() {
-    Axios.get('http://fechallowes.us-east-2.elasticbeanstalk.com/lem')
+    Axios.post('http://fechallowes.us-east-2.elasticbeanstalk.com/lem', {
+      productId: 78
+    })
     .then((response) => {
       // let urls = response.data.urls.map(url => {      
       //   url.URL = url.URL.split(", ");
       //   return url.URL;      
       // })
       // urls = urls.flat();
-      console.log('this is response.data -> ',response.data[0]);
+      // console.log('this is response.data -> ',response.data);
       // console.log(response.data.cate.Category);
       this.setState({
   //Most comments in this get request are due to needing to pivot to a different database.
@@ -52,15 +55,43 @@ class App extends React.Component{
         productId: response.data[0].id,
         imageUrl: response.data[0].picture,
         productName: response.data[0].name,
+        category: response.data[0].categoryname,
+        stars: response.data[0].rating,
+        numberOfReviews: response.data[0].numReviews,
+
         
         })
-
     })
     .catch(function (error) {
       console.log('this error -> ',error);
-    })
-  }
+    }),
+
+    window.addEventListener("changeItem", (e) => {
+      Axios.post('http://fechallowes.us-east-2.elasticbeanstalk.com/lem', {
+        productId: e.detail
+        //e.detail,
+      }) 
+      .then(response => {
+
+        console.log('this is response.data -> ',response.data[0]);
+
+        this.setState({
+          imageList: response.data[0].picture,
+          productId: response.data[0].id,
+          imageUrl: response.data[0].picture,
+          productName: response.data[0].name,
+          category: response.data[0].categoryname,
+          stars: response.data[0].rating,
+          numberOfReviews: response.data[0].numReviews,
+          })
   
+      })
+      .catch(function (error) {
+        console.log('this error -> ',error);
+
+    })
+  })
+}
   poppingOut () {
     this.setState(state => ({
       clicks: state.clicks + 1
@@ -79,10 +110,10 @@ class App extends React.Component{
 // />     
 <div>
       <Intro category={this.state.category}/>
-      <Title name={this.state.productName}/>
+      <Title name={this.state.productName} id={this.state.productId}/>
       {/* <Reviews />
       <WriteReview /> */}
-      <Qa stars={this.state.stars}/>
+      <Qa stars={this.state.stars} revs={this.state.numberOfReviews}/>
 
       <PopOut urls={this.state.imageList}  popState={this.poppingOut}/>
 
