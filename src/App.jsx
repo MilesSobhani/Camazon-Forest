@@ -31,9 +31,9 @@ class App extends React.Component{
     }
     this.poppingOut = this.poppingOut.bind(this);
   }
-  //http://fechallowes.us-east-2.elasticbeanstalk.com
+  //
   componentDidMount() {
-    Axios.get('/lem')
+    Axios.get('http://fechallowes.us-east-2.elasticbeanstalk.com/lem')
     .then((response) => {
 
       let urls = response.data.urls.map(url => {      
@@ -42,7 +42,7 @@ class App extends React.Component{
       })
       urls = urls.flat();
       console.log('this is response -> ',response.data);
-      console.log(response.data.cate.Category);
+      // console.log(response.data.cate.Category);
       this.setState({
         imageList: urls,
         imageUrl: urls,

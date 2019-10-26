@@ -7,20 +7,22 @@ const absolutePath = path.join(__dirname, '/../dist');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const cors = require("cors");
-let productName = 'Window With Ghost In it Sometimes';
+let productName = 'Hell Fire';
 app.use(cors());
+app.use(express.static(absolutePath));
+bodyParser.json();
 
 var connection = mysql.createConnection({
-  host: config.host,
-  user: config.user,
-  password: config.DBPW,
+  host: 'fec-hallowes.ccdz2i80m3e7.us-east-2.rds.amazonaws.com',
+  user: 'admin',
+  password: 'TempleRun',
   database: 'Hallowes',
 });
 connection.connect();
+//config.userconfig.hostconfig.DBPW
 
-app.use(express.static(absolutePath));
 // app.use(express.json());
-bodyParser.json();
+
 
 app.get('/lem', (req, res) => {
   // console.log("this request is working");
@@ -50,3 +52,4 @@ app.get('/lem', (req, res) => {
 
 
 app.listen(port, () => console.log(`Listening to port ${port}`));
+
