@@ -8,6 +8,9 @@ import Title from "./components/Title.jsx"
 //import WriteReview from "./components/WriteReview.jsx"
 import ModalClick from "./components/ModalClick.jsx";
 //import CSS from 'bootstrap/dist/css/bootstrap.min.css';
+import StarIcon from '@material-ui/icons/Star';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import StarHalfIcon from '@material-ui/icons/StarHalf';
 import Axios from "axios";
 import './styles/styles.css';
 
@@ -28,15 +31,30 @@ class App extends React.Component{
       productName: '',
       category: "",
       numberOfReviews : 0,
+      starsArray: [],
     }
     this.poppingOut = this.poppingOut.bind(this);
   }
   //
   componentDidMount() {
+
     Axios.post('http://fechallowes.us-east-2.elasticbeanstalk.com/lem', {
-      productId: 78
+      productId: 1
     })
     .then((response) => {
+      let divs = [];
+      for (let i =0 ; i< stars; i++) {
+        divs.push(<StarIcon key={i}/>)
+      }
+      if (remainder > 0.2 && remainder < 0.8) {
+        divs.push(<StarHalfIcon key={6}/>)
+      }
+      if (remainder > 0.8) {
+      divs.push(<StarIcon key={6}/>)
+      }
+      while(divs.length < 5){
+        divs.push(<StarBorderIcon key={6}/>)
+      } 
       // let urls = response.data.urls.map(url => {      
       //   url.URL = url.URL.split(", ");
       //   return url.URL;      
@@ -58,7 +76,7 @@ class App extends React.Component{
         category: response.data[0].categoryname,
         stars: response.data[0].rating,
         numberOfReviews: response.data[0].numReviews,
-
+        starsArray: divs,
         
         })
     })
@@ -72,6 +90,19 @@ class App extends React.Component{
         //e.detail,
       }) 
       .then(response => {
+        let divs = [];
+        for (let i =0 ; i< stars; i++) {
+          divs.push(<StarIcon key={i}/>)
+        }
+        if (remainder > 0.2 && remainder < 0.8) {
+          divs.push(<StarHalfIcon key={6}/>)
+        }
+        if (remainder > 0.8) {
+        divs.push(<StarIcon key={6}/>)
+        }
+        while(divs.length < 5){
+          divs.push(<StarBorderIcon key={6}/>)
+        } 
 
         console.log('this is response.data -> ',response.data[0]);
 
@@ -83,6 +114,7 @@ class App extends React.Component{
           category: response.data[0].categoryname,
           stars: response.data[0].rating,
           numberOfReviews: response.data[0].numReviews,
+          starsArray: divs,
           })
   
       })
