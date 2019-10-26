@@ -42,8 +42,10 @@ class App extends React.Component{
       productId: 1
     })
     .then((response) => {
+      let starz = Math.floor(this.state.stars);
+      let remainder = Number(this.state.stars%1);
       let divs = [];
-      for (let i =0 ; i< stars; i++) {
+      for (let i =0 ; i< starz; i++) {
         divs.push(<StarIcon key={i}/>)
       }
       if (remainder > 0.2 && remainder < 0.8) {
@@ -90,8 +92,11 @@ class App extends React.Component{
         //e.detail,
       }) 
       .then(response => {
+        let starz = Math.floor(this.state.stars);
+        let remainder = Number(this.state.stars%1);
+
         let divs = [];
-        for (let i =0 ; i< stars; i++) {
+        for (let i =0 ; i< starz; i++) {
           divs.push(<StarIcon key={i}/>)
         }
         if (remainder > 0.2 && remainder < 0.8) {
@@ -145,7 +150,7 @@ class App extends React.Component{
       <Title name={this.state.productName} id={this.state.productId}/>
       {/* <Reviews />
       <WriteReview /> */}
-      <Qa stars={this.state.stars} revs={this.state.numberOfReviews}/>
+      <Qa stars={this.state.stars} revs={this.state.numberOfReviews} divs={this.state.starsArray}/>
 
       <PopOut urls={this.state.imageList}  popState={this.poppingOut}/>
 

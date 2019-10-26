@@ -6,8 +6,6 @@ import StarHalfIcon from '@material-ui/icons/StarHalf'
 import ChatIcon from '@material-ui/icons/Chat';
 const Qa = (props) => {
   
-let stars = Math.floor(props.stars);
-let remainder = Number(props.stars%1);
 
 
 
@@ -22,7 +20,7 @@ let remainder = Number(props.stars%1);
       <div className={'cs-stars'}>
 
       <div className={'star-ratings'}>
-         {divs}
+         {props.divs}
        </div>
          {props.stars}
      </div>
