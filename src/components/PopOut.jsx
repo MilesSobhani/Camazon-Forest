@@ -42,9 +42,12 @@ class PopOut extends React.Component {
 
     return (
     <div className={'cs-most-of-component'}>
-    
+    {console.log(this.state.url)}
     <div className={"gridList"}>
-      {this.props.urls.map((tile, i) => {
+    <button className={'cs-grid'} key={0} onClick={() => {this.state.setOpen ? this.setState({setOpen: false}) : this.setState({setOpen: true}); this.setState({focus: 0})} }>
+      <img className={'cs-icons cs-images'} src={this.props.urls}/>
+    </button>
+      {/* {this.props.urls.map((tile, i) => {
         if(i < 5){
           return(
 
@@ -53,7 +56,7 @@ class PopOut extends React.Component {
           </button>
         )}
         
-        })}
+        })} */}
       {(() => {
         if(this.state.url.length > 4){
         return (      
@@ -63,7 +66,7 @@ class PopOut extends React.Component {
 
       </div>
       <button className={'cs-main-image-modal-button'} onClick={() => {this.state.setOpen ? this.setState({setOpen: false}) : this.setState({setOpen: true})} }>
-        <img className={'cs-main-image-modal-button'} src={this.props.urls[0]} />
+        <img className={'cs-main-image-modal-button'} src={this.props.urls} />
       </button>
     {this.state.setOpen ? (
 

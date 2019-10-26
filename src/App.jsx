@@ -19,7 +19,6 @@ class App extends React.Component{
       //states I'll need from the group:
       //product
       //rating changes
-      //
       imageList: [],
 //    imageList: ["https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/halloween-trivia-jack-o-lanterns-1531163183.jpg?crop=0.619xw:0.932xh;0.0952xw,0.0677xh&resize=480:*", "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png"],
       imageUrl: "",
@@ -35,20 +34,25 @@ class App extends React.Component{
   componentDidMount() {
     Axios.get('http://fechallowes.us-east-2.elasticbeanstalk.com/lem')
     .then((response) => {
-
-      let urls = response.data.urls.map(url => {      
-        url.URL = url.URL.split(", ");
-        return url.URL;      
-      })
-      urls = urls.flat();
-      console.log('this is response -> ',response.data);
+      // let urls = response.data.urls.map(url => {      
+      //   url.URL = url.URL.split(", ");
+      //   return url.URL;      
+      // })
+      // urls = urls.flat();
+      console.log('this is response.data -> ',response.data[0]);
       // console.log(response.data.cate.Category);
       this.setState({
-        imageList: urls,
-        imageUrl: urls,
-        productName: response.data.urls[0].Name,
-        productId: response.data.urls[0].ID,
-        category: response.data.cate[0].Category,
+  //Most comments in this get request are due to needing to pivot to a different database.
+        // imageList: urls,
+        // imageUrl: urls,
+        // productName: response.data.urls[0].Name,
+        // productId: response.data.urls[0].ID,
+        // category: response.data.cate[0].Category,
+        imageList: response.data[0].picture,
+        productId: response.data[0].id,
+        imageUrl: response.data[0].picture,
+        productName: response.data[0].name,
+        
         })
 
     })

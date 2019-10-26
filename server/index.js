@@ -1,7 +1,7 @@
 const express = require('express');
 const port = 4239;
 const path = require('path');
-const config = require('../config');
+//const config = require('../config');
 const app = express();
 const absolutePath = path.join(__dirname, '/../dist');
 const mysql = require('mysql');
@@ -13,10 +13,10 @@ app.use(express.static(absolutePath));
 bodyParser.json();
 
 var connection = mysql.createConnection({
-  host: 'fec-hallowes.ccdz2i80m3e7.us-east-2.rds.amazonaws.com',
-  user: 'admin',
-  password: 'TempleRun',
-  database: 'Hallowes',
+  host: 'fec-hallowes-carousel.cgmhnhykd7qi.us-east-2.rds.amazonaws.com',
+  user: 'atgeorge11',
+  password: 'atgeorge11',
+  database: 'fec_hallowes_carousel',
 });
 connection.connect();
 //config.userconfig.hostconfig.DBPW
@@ -28,23 +28,23 @@ app.get('/lem', (req, res) => {
   // console.log("this request is working");
   // console.log(connection);
 // let thisQuery = 'SELECT * FROM urls '
-  connection.query(`SELECT * FROM urls WHERE Name = "${productName}"`, function (error, resultsOne, fields) {
+  connection.query(`SELECT * FROM items WHERE name = "${productName}"`, function (error, results, fields) {
     if (error){ 
       throw error;
     } else {
-      let starterLoad = {
-        urls: resultsOne,
-      }
-      connection.query(`SELECT * FROM product_table WHERE Name = "${productName}"`, function (error, results, fields) {
-      // let urlArray =  results.map((urls) =>  {
-        if(error){
-          throw error;
-        } else {
-          starterLoad.cate = results;
-          console.log('This is the res send ', starterLoad);
-          res.send(starterLoad);
-        }
-      })
+      // let starterLoad = {
+      //   urls: resultsOne,
+      // }
+      // connection.query(`SELECT * FROM product_table WHERE Name = "${productName}"`, function (error, results, fields) {
+      // // let urlArray =  results.map((urls) =>  {
+      //   if(error){
+      //     throw error;
+      //   } else {
+          // starterLoad.cate = results;
+          console.log('This is the res send ', results);
+          res.send(results);
+        // }
+      // })
       }
     })
 

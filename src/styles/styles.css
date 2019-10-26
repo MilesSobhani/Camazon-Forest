@@ -167,6 +167,8 @@ body{
 .cs-main-image-modal-button{
   min-height: 450px;
   max-height: 485px;
+  max-width: 485px;
+  /* min-width: 485; */
   /* border:5px; */
   border:none;
   background: transparent;
