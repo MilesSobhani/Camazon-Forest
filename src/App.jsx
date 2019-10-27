@@ -27,11 +27,11 @@ class App extends React.Component{
       imageUrl: "",
       productId: 0,
       clicks: 0,
-      stars: 5,
+      stars: 0,
       productName: '',
       category: "",
       numberOfReviews : 0,
-      starsArray: [],
+      starsArray: [0, 0, 0, 0, 0],
     }
     this.poppingOut = this.poppingOut.bind(this);
   }
@@ -42,21 +42,7 @@ class App extends React.Component{
       productId: 1
     })
     .then((response) => {
-      let starz = Math.floor(this.state.stars);
-      let remainder = Number(this.state.stars%1);
-      let divs = [];
-      for (let i =0 ; i< starz; i++) {
-        divs.push(<StarIcon key={i}/>)
-      }
-      if (remainder > 0.2 && remainder < 0.8) {
-        divs.push(<StarHalfIcon key={6}/>)
-      }
-      if (remainder > 0.8) {
-      divs.push(<StarIcon key={6}/>)
-      }
-      while(divs.length < 5){
-        divs.push(<StarBorderIcon key={6}/>)
-      } 
+
       // let urls = response.data.urls.map(url => {      
       //   url.URL = url.URL.split(", ");
       //   return url.URL;      
@@ -78,7 +64,6 @@ class App extends React.Component{
         category: response.data[0].categoryname,
         stars: response.data[0].rating,
         numberOfReviews: response.data[0].numReviews,
-        starsArray: divs,
         
         })
     })
@@ -92,22 +77,6 @@ class App extends React.Component{
         //e.detail,
       }) 
       .then(response => {
-        let starz = Math.floor(this.state.stars);
-        let remainder = Number(this.state.stars%1);
-
-        let divs = [];
-        for (let i =0 ; i< starz; i++) {
-          divs.push(<StarIcon key={i}/>)
-        }
-        if (remainder > 0.2 && remainder < 0.8) {
-          divs.push(<StarHalfIcon key={6}/>)
-        }
-        if (remainder > 0.8) {
-        divs.push(<StarIcon key={6}/>)
-        }
-        while(divs.length < 5){
-          divs.push(<StarBorderIcon key={6}/>)
-        } 
 
         console.log('this is response.data -> ',response.data[0]);
 
@@ -119,9 +88,8 @@ class App extends React.Component{
           category: response.data[0].categoryname,
           stars: response.data[0].rating,
           numberOfReviews: response.data[0].numReviews,
-          starsArray: divs,
           })
-  
+          
       })
       .catch(function (error) {
         console.log('this error -> ',error);
@@ -150,7 +118,7 @@ class App extends React.Component{
       <Title name={this.state.productName} id={this.state.productId}/>
       {/* <Reviews />
       <WriteReview /> */}
-      <Qa stars={this.state.stars} revs={this.state.numberOfReviews} divs={this.state.starsArray}/>
+      <Qa stars={this.state.stars} revs={this.state.numberOfReviews} starsArray={this.state.starsArray}/>
 
       <PopOut urls={this.state.imageList}  popState={this.poppingOut}/>
 
