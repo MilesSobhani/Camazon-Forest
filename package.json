@@ -12,7 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^3.3.3"
+    "mongodb": "^3.3.3",
+    "pg": "^7.12.1"
   },
   "devDependencies": {}
 }

@@ -16,38 +16,46 @@ client.connect(function(err) {
   console.log("Connected successfully to server");
   var i = 0
   const db = client.db(dbName);
-  const collection = db.collection('attempt4')
+  const collection = db.collection('reSeed3')
   
-  console.time('queryID')
+  console.time('queryID');
   // collection.find({itemId:1000000}), (function(err, docs) {
   //   assert.equal(null, err);
   //   assert.equal(2, docs.length);
   //   client.close();
   // });
-  collection.findOne({itemId:1345345}).then((item) => {console.log(item),console.timeEnd('queryID')})
+  function bulkQuery(num){
+    if(num <= 0){
+      console.timeEnd('queryID')
+      return
+    }
+    let rand = Math.floor(Math.random() * 10000000)
+    collection.findOne({_id:rand}).then((item) => {console.log(item, num)}).then(() => {bulkQuery(num - 1)})
+  };
+  bulkQuery(1000)
   // (function massWritePics(num){
-  //   const collection = db.collection('attempt4')
+  //   const collection = db.collection('reSeed3')
   //   var results = []
   //   for(var i = num; i <= 1000000 + num; i++){
-  //     if(i === 10000000){
+  //     if(i >= 11100000){
   //       return;
   //     }
   //     var newObj = {}
-  //       newObj.itemId = i,
-  //       newObj.pictures=[`https://loremflickr.com/320/240?random=${i}`,
-  //       `https://loremflickr.com/320/240?random=${i+15}`,
-  //       `https://loremflickr.com/320/240?random=${i+25}`,
-  //       `https://loremflickr.com/320/240?random=${i+35}`]
+        // newObj._id = i,
+  //       newObj.pictures=[`https://loremflickr.com/320/240?lock=${i}`,
+  //       `https://loremflickr.com/320/240?lock=${i+15}`,
+  //       `https://loremflickr.com/320/240?lock=${i+25}`,
+  //       `https://loremflickr.com/320/240?lock=${i+35}`]
       
   //     results.push(newObj);
   //   }
   //   console.time('1,000,000 write');
   // collection.insertMany(results).then(()=>{
   //     console.timeEnd('1,000,000 write');
-  //     massWritePics(1000000 + i);
+  //     massWritePics(i);
   // });
   // }(1))
-  
+  // console.log('write complete!')
   // client.close();
 });
 
